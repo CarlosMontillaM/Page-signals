@@ -1,126 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Análisis de Señales</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Análisis de Señales — Curso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
-    nav { background: #34495e; display: flex; justify-content: center; }
-    nav a { color: white; padding: 1rem; text-decoration: none; }
-    nav a:hover { background: #2c3e50; }
-    main { padding: 2rem; }
-    section { margin-bottom: 2rem; }
-    h2 { color: #2c3e50; }
-    ul { list-style-type: disc; margin-left: 2rem; }
-    iframe { width: 100%; height: 500px; border: none; margin-top: 1rem; }
-    .pdf-link { margin-top: 1rem; display: inline-block; background: #2c3e50; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; }
-    .pdf-link:hover { background: #1a252f; }
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa6bf;
+      --accent1:#6ee7b7;
+      --accent2:#7dd3fc;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071028 0%,#09121b 60%);color:#e6eef8}
+    a{color:var(--accent2);text-decoration:none}
+    header{backdrop-filter: blur(6px);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:40}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+
+    /* Nav */
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 6px 18px rgba(12,20,30,0.6)}
+    nav ul{Display:flex;gap:10px;list-style:none;margin:0;padding:0}
+    nav li{padding:8px 12px;border-radius:8px}
+    nav li a{font-weight:600}
+    nav li a:hover{background:var(--glass);display:inline-block}
+
+    /* Mobile */
+    .hamburger{display:none;background:transparent;border:0;color:var(--accent2);font-size:22px}
+    @media (max-width:800px){nav ul{display:none} .hamburger{display:block}}
+
+    /* Hero */
+    .hero{display:flex;gap:28px;align-items:center;padding:48px 0}
+    .hero-left{flex:1}
+    .hero h1{margin:0;font-size:32px;line-height:1.05}
+    .hero p{color:var(--muted);margin-top:10px}
+    .cta{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#032;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:24px}
+    @media (max-width:1000px){.grid{grid-template-columns:1fr}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .section{margin-top:18px}
+
+    /* Lists & items */
+    .syllabus li{padding:12px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,0.01);display:flex;justify-content:space-between;align-items:center}
+    .labs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(max-width:600px){.labs{grid-template-columns:1fr}}
+    .lab-item{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)}
+
+    footer{margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px;text-align:center}
+
+    nav a.active{outline:2px solid rgba(125,211,252,0.12);border-radius:8px}
+
   </style>
 </head>
 <body>
   <header>
-    <h1>Materia: Análisis de Señales</h1>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">AS</div>
+        <div>
+          <div style="font-weight:700">Análisis de Señales</div>
+          <div style="font-size:13px;color:var(--muted)">IE763 — 2025-II</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="hamburger" id="hamb">☰</button>
+        <ul id="menu">
+          <li><a href="#introduccion">Introducción</a></li>
+          <li><a href="#material">Material de estudio</a></li>
+          <li><a href="#talleres">Talleres</a></li>
+          <li><a href="#laboratorios">Laboratorios</a></li>
+          <li><a href="#enlaces">Enlaces de interés</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#introduccion">Introducción</a>
-    <a href="#material">Material de estudio</a>
-    <a href="#talleres">Talleres</a>
-    <a href="#laboratorios">Laboratorios</a>
-    <a href="#enlaces">Enlaces de interés</a>
-    <a href="#programa">Programa</a>
-  </nav>
+  <main class="container">
+    <section id="introduccion" class="hero">
+      <div class="hero-left">
+        <h1>Bienvenido al curso de <span style="color:var(--accent2)">Análisis de Señales</span></h1>
+        <p>Este curso tiene como objetivo dotar a los estudiantes de una comprensión sólida y práctica de los principios fundamentales del análisis de señales —continuas y discretas— y de las herramientas matemáticas y computacionales necesarias para representar, transformar y procesar señales en aplicaciones de ingeniería y tecnología.</p>
+        <div class="cta">
+          <a class="btn" href="#material">Ver Material</a>
+          <a class="btn secondary" href="#talleres">Ver Talleres</a>
+        </div>
 
-  <main>
-    <section id="introduccion">
-      <h2>Introducción</h2>
-      <p>Bienvenidos a la página de la asignatura de Análisis de Señales. Aquí encontrarás información general, materiales de apoyo, talleres y enlaces relevantes.</p>
+        <div class="section card">
+          <h3 style="margin:0 0 8px 0">Programa de la asignatura (extracto oficial)</h3>
+          <p style="color:var(--muted);margin:0 0 10px 0"><strong>Código de asignatura:</strong> IE763 &nbsp; &nbsp; <strong>Programa:</strong> Ingeniería Eléctrica</p>
+
+          <h4 style="margin:8px 0 6px 0">Breve descripción</h4>
+          <p style="color:var(--muted);margin-top:6px">La asignatura Análisis de señales es de naturaleza teórica; su propósito es el análisis y cuantificación de la energía o potencia de los armónicos contenidos en una señal, así como el desarrollo de los conceptos de discretización, filtrado y modulación de señales.</p>
+
+          <h4 style="margin:8px 0 6px 0">Objetivo</h4>
+          <p style="color:var(--muted);margin-top:6px">Se espera que al finalizar este curso el estudiante esté en capacidad de aplicar la teoría básica de señales para los procesos de discretización, transformación, modulación y filtrado de señales (en correspondencia con el objetivo del programa OP-2).</p>
+
+          <h4 style="margin:8px 0 6px 0">Resultados de aprendizaje (RA)</h4>
+          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
+            <li>RA1. Analizar en tiempo-frecuencia señales de energía.</li>
+            <li>RA2. Analizar en tiempo-frecuencia señales de potencia.</li>
+            <li>RA3. Aplicar los procesos de discretización de señales.</li>
+            <li>RA4. Diseñar procesos de filtrado de señales.</li>
+            <li>RA5. Diseñar procesos de modulación de señales.</li>
+            <li>RA6. Capacidad para resolver problemas.</li>
+            <li>RA7. Habilidades para comunicación oral y escrita.</li>
+            <li>RA8. Capacidad de pensamiento crítico.</li>
+          </ul>
+
+          <h4 style="margin:8px 0 6px 0">Contenido y carga (temas principales)</h4>
+          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
+            <li>T1: Definición y clasificación de señales — 12 h.</li>
+            <li>T2: Ortogonalidad y representación de señales — 4 h.</li>
+            <li>T3: Series de Fourier — 12 h.</li>
+            <li>T4: Análisis de forma de onda periódicas — 8 h.</li>
+            <li>T5: La transformada de Fourier — 16 h.</li>
+            <li>T6: Aplicaciones — 8 h.</li>
+            <li>T7: Parámetros asociados a la calidad de energía — 4 h.</li>
+          </ul>
+
+          <h4 style="margin:8px 0 6px 0">Requisitos y competencias previas</h4>
+          <p style="color:var(--muted);margin-top:6px">Asignaturas: Sistemas lineales (código IE683). Competencias: conocimientos en análisis de variable compleja, teoría de análisis funcional, cálculo diferencial e integral, programación de computadores y programación lineal.</p>
+
+          <h4 style="margin:8px 0 6px 0">Recursos y bibliografía</h4>
+          <p style="color:var(--muted);margin-top:6px">Ejemplos de libros y recursos citados en el programa: Castellanos & Orozco — Representación de señales y sistemas; Vargas et al. — Teoría de señales; Hsu — Signals and Systems; Proakis & Manolakis — Tratamiento digital de señales; y textos sobre calidad de energía (UPME/Colciencias, Dugan, Kusko, Santoso).</p>
+
+          <h4 style="margin:8px 0 6px 0">Herramientas informáticas y técnicas</h4>
+          <p style="color:var(--muted);margin-top:6px">Software de simulación: Matlab™. Analizadores de señales, tarjetas de adquisición y demás herramientas técnicas necesarias para las prácticas de laboratorio.</p>
+
+          <h4 style="margin:8px 0 6px 0">Trabajos en laboratorio y proyectos (resumen)</h4>
+          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
+            <li>Dos proyectos: (1) Generar notas musicales en Matlab a partir de armónicos simples (6h). (2) Representación de datos mediante funciones ortogonales: aplicación al reconocimiento de señales (6h).</li>
+            <li>Cuatro trabajos de laboratorio:</li>
+            <ul style="color:var(--muted);margin:6px 0 0 36px;padding:0">
+              <li>Lab 1: Aliasing y teorema de muestreo (2h).</li>
+              <li>Lab 2: Armónicos simples y en sistemas eléctricos (2h).</li>
+              <li>Lab 3: Representación con espacios funcionales (2h).</li>
+              <li>Lab 4: Cálculo de DFT y FFT (2h).</li>
+            </ul>
+          </ul>
+
+          <h4 style="margin:8px 0 6px 0">Métodos de aprendizaje</h4>
+          <p style="color:var(--muted);margin-top:6px">Clases magistrales, asesorías, trabajos en grupo, talleres y proyecto final.</p>
+
+          <h4 style="margin:8px 0 6px 0">Métodos de evaluación (resumen)</h4>
+          <p style="color:var(--muted);margin-top:6px">Distribución propuesta en el programa:</p>
+          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
+            <li>Laboratorios, talleres y quices (T1 a T7): 25% (evaluación de RA1 a RA8).</li>
+            <li>Examen 1 (T1, T2): 25%.</li>
+            <li>Examen 2 (T3, T4): 25%.</li>
+            <li>Examen final (T5, T6, T7): 25%.</li>
+          </ul>
+
+          <p style="color:var(--muted);margin-top:10px;font-size:12px">Fuente: Programa de asignatura — Universidad Tecnológica de Pereira (extracto).</p>
+        </div>
+      </div>
+
+      <div style="width:340px">
+        <div class="card">
+          <h4 style="margin-top:0">Detalles del curso</h4>
+          <p style="margin:6px 0;color:var(--muted)"><strong>Profesor:</strong> Álvaro Ángel Orozco<br><strong>Email:</strong> aaog@utp.edu.co</p>
+          <p style="margin:6px 0;color:var(--muted)"><strong>Profesor:</strong> Julián David Pastrana<br><strong>Email:</strong> j.pastrana@utp.edu.co</p>
+        </div>
+      </div>
     </section>
 
-    <section id="material">
-      <h2>Material de estudio</h2>
-      <ul>
-        <li>Apuntes de clase</li>
-        <li>Libros recomendados</li>
-        <li>Presentaciones</li>
-      </ul>
-    </section>
+    <div class="grid">
+      <div>
+        <section id="material" class="section card">
+          <h2>Material de estudio</h2>
+          <p style="color:var(--muted)">Apuntes, libros recomendados y notebooks para seguir el curso.</p>
+          <ul class="syllabus" style="margin-top:12px;padding:0">
+            <li><div>Apuntes del curso (PDF)</div><div style="color:var(--muted)"><a href="#">Descargar</a></div></li>
+            <li><div>Libro: Oppenheim — Señales y sistemas</div><div style="color:var(--muted)">Referencia</div></li>
+            <li><div>Notebooks: FFT, filtrado y análisis</div><div style="color:var(--muted)"><a href="#">Abrir en Colab</a></div></li>
+          </ul>
+        </section>
 
-    <section id="talleres">
-      <h2>Talleres</h2>
-      <ul id="lista-talleres"></ul>
-      <form id="form-taller">
-        <input type="text" id="titulo-taller" placeholder="Título del taller" required>
-        <input type="url" id="url-taller" placeholder="URL del PDF" required>
-        <button type="submit">Añadir taller</button>
-      </form>
-      <button onclick="limpiarTalleres()">Borrar todos los talleres</button>
-    </section>
+        <section id="talleres" class="section card">
+          <h2>Talleres</h2>
+          <p style="color:var(--muted)">Actividades prácticas breves para consolidar conceptos.</p>
+          <ul style="color:var(--muted);margin-top:12px;padding-left:18px">
+            <li><strong>Taller 1:</strong> Análisis de señales periódicas — ejercicio guiado.</li>
+            <li><strong>Taller 2:</strong> Ventanas y resolución espectral — práctica rápida.</li>
+            <li><strong>Taller 3:</strong> Detección de picos en ECG — mini proyecto.</li>
+          </ul>
+          <p style="margin-top:12px"><a href="#">Repositorio de ejercicios</a></p>
+        </section>
 
-    <section id="laboratorios">
-      <h2>Laboratorios</h2>
-      <p>Prácticas y experimentos para reforzar los conceptos de la materia.</p>
-    </section>
+        <section id="laboratorios" class="section">
+          <h2 style="margin-bottom:10px">Laboratorios</h2>
+          <div class="labs">
+            <div class="lab-item card">
+              <h4>Lab 1 — Señales básicas</h4>
+              <p style="color:var(--muted)">Introducción a señales deterministas y estocásticas. Entregable: reporte y código.</p>
+            </div>
+            <div class="lab-item card">
+              <h4>Lab 2 — FFT y espectros</h4>
+              <p style="color:var(--muted)">Cálculo de espectro y detección de componentes.</p>
+            </div>
+            <div class="lab-item card">
+              <h4>Lab 3 — Filtrado digital</h4>
+              <p style="color:var(--muted)">Diseño de filtros FIR y IIR.</p>
+            </div>
+            <div class="lab-item card">
+              <h4>Lab 4 — ECG: detección de arritmias</h4>
+              <p style="color:var(--muted)">Pipeline de preprocesamiento y clasificación simple.</p>
+            </div>
+          </div>
+        </section>
 
-    <section id="enlaces">
-      <h2>Enlaces de interés</h2>
-      <ul>
-        <li><a href="https://ocw.mit.edu" target="_blank">MIT OpenCourseWare</a></li>
-        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
-      </ul>
-    </section>
+        <section id="enlaces" class="section card">
+          <h2>Enlaces de interés</h2>
+          <p style="color:var(--muted)">Recursos externos, datasets y comunidades.</p>
+          <ul style="margin-top:12px;color:var(--muted)">
+            <li><a href="#" target="_blank">PhysioNet — Datasets biomédicos</a></li>
+            <li><a href="#" target="_blank">Documentación NumPy / SciPy</a></li>
+            <li><a href="#" target="_blank">Tutorial FFT — Blog</a></li>
+          </ul>
+        </section>
+      </div>
 
-    <section id="programa">
-      <h2>Programa de la asignatura</h2>
-      <a class="pdf-link" href="https://media2.utp.edu.co/programas/74/analisis-de-senales.pdf" target="_blank">📄 Ver/descargar programa</a>
-      <iframe src="https://media2.utp.edu.co/programas/74/analisis-de-senales.pdf"></iframe>
-    </section>
+      <aside>
+        <div class="card">
+          <h4>Enlaces rápidos</h4>
+          <ul style="color:var(--muted);margin:8px 0 0 0;padding-left:18px">
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#material">Material de estudio</a></li>
+            <li><a href="#talleres">Talleres</a></li>
+            <li><a href="#laboratorios">Laboratorios</a></li>
+            <li><a href="#enlaces">Enlaces de interés</a></li>
+          </ul>
+        </div>
+
+        <div class="card section">
+          <h4>Próximas entregas</h4>
+          <p style="color:var(--muted);margin:6px 0">Lab 1 — Fecha: 2025-09-30</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © 2025 — Curso Análisis de Señales — Universidad · Hecho para GitHub Pages
+    </footer>
   </main>
 
   <script>
-    const listaTalleres = document.getElementById("lista-talleres");
-    const formTaller = document.getElementById("form-taller");
-
-    function cargarTalleres() {
-      const talleres = JSON.parse(localStorage.getItem("talleres")) || [];
-      listaTalleres.innerHTML = "";
-      talleres.forEach((taller, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `${taller.titulo} - <a href="${taller.url}" target="_blank">Descargar PDF</a> <button onclick="eliminarTaller(${index})">❌</button>`;
-        listaTalleres.appendChild(li);
-      });
-    }
-
-    function guardarTaller(taller) {
-      const talleres = JSON.parse(localStorage.getItem("talleres")) || [];
-      talleres.push(taller);
-      localStorage.setItem("talleres", JSON.stringify(talleres));
-      cargarTalleres();
-    }
-
-    function eliminarTaller(index) {
-      const talleres = JSON.parse(localStorage.getItem("talleres")) || [];
-      talleres.splice(index, 1);
-      localStorage.setItem("talleres", JSON.stringify(talleres));
-      cargarTalleres();
-    }
-
-    function limpiarTalleres() {
-      localStorage.removeItem("talleres");
-      cargarTalleres();
-    }
-
-    formTaller.addEventListener("submit", e => {
-      e.preventDefault();
-      const titulo = document.getElementById("titulo-taller").value;
-      const url = document.getElementById("url-taller").value;
-      guardarTaller({ titulo, url });
-      formTaller.reset();
-    });
-
-    window.onload = cargarTalleres;
-  </script>
-</body>
-</html>
+    // Mobile menu toggle
+    const hamb = document.getElementById('hamb');
+    const menu = document.getElementById('menu');
