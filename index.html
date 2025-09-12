@@ -28,7 +28,7 @@
     .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 6px 18px rgba(12,20,30,0.6)}
-    nav ul{Display:flex;gap:10px;list-style:none;margin:0;padding:0}
+    nav ul{display:flex;gap:10px;list-style:none;margin:0;padding:0}
     nav li{padding:8px 12px;border-radius:8px}
     nav li a{font-weight:600}
     nav li a:hover{background:var(--glass);display:inline-block}
@@ -100,72 +100,16 @@
         </div>
 
         <div class="section card">
-          <h3 style="margin:0 0 8px 0">Programa de la asignatura (extracto oficial)</h3>
-          <p style="color:var(--muted);margin:0 0 10px 0"><strong>Código de asignatura:</strong> IE763 &nbsp; &nbsp; <strong>Programa:</strong> Ingeniería Eléctrica</p>
-
-          <h4 style="margin:8px 0 6px 0">Breve descripción</h4>
-          <p style="color:var(--muted);margin-top:6px">La asignatura Análisis de señales es de naturaleza teórica; su propósito es el análisis y cuantificación de la energía o potencia de los armónicos contenidos en una señal, así como el desarrollo de los conceptos de discretización, filtrado y modulación de señales.</p>
-
-          <h4 style="margin:8px 0 6px 0">Objetivo</h4>
-          <p style="color:var(--muted);margin-top:6px">Se espera que al finalizar este curso el estudiante esté en capacidad de aplicar la teoría básica de señales para los procesos de discretización, transformación, modulación y filtrado de señales (en correspondencia con el objetivo del programa OP-2).</p>
-
-          <h4 style="margin:8px 0 6px 0">Resultados de aprendizaje (RA)</h4>
-          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
-            <li>RA1. Analizar en tiempo-frecuencia señales de energía.</li>
-            <li>RA2. Analizar en tiempo-frecuencia señales de potencia.</li>
-            <li>RA3. Aplicar los procesos de discretización de señales.</li>
-            <li>RA4. Diseñar procesos de filtrado de señales.</li>
-            <li>RA5. Diseñar procesos de modulación de señales.</li>
-            <li>RA6. Capacidad para resolver problemas.</li>
-            <li>RA7. Habilidades para comunicación oral y escrita.</li>
-            <li>RA8. Capacidad de pensamiento crítico.</li>
+          <h3 style="margin:0 0 8px 0">Contenido de la asignatura</h3>
+          <ul style="color:var(--muted);margin:0;padding-left:18px">
+            <li>Definición y clasificación de señales.</li>
+            <li>Ortogonalidad y representación de señales.</li>
+            <li>Series de Fourier.</li>
+            <li>Análisis de forma de onda periódicas.</li>
+            <li>Parámetros asociados a la calidad de energía.</li>
+            <li>La transformada de Fourier.</li>
+            <li>Aplicaciones de la transformada de Fourier.</li>
           </ul>
-
-          <h4 style="margin:8px 0 6px 0">Contenido y carga (temas principales)</h4>
-          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
-            <li>T1: Definición y clasificación de señales — 12 h.</li>
-            <li>T2: Ortogonalidad y representación de señales — 4 h.</li>
-            <li>T3: Series de Fourier — 12 h.</li>
-            <li>T4: Análisis de forma de onda periódicas — 8 h.</li>
-            <li>T5: La transformada de Fourier — 16 h.</li>
-            <li>T6: Aplicaciones — 8 h.</li>
-            <li>T7: Parámetros asociados a la calidad de energía — 4 h.</li>
-          </ul>
-
-          <h4 style="margin:8px 0 6px 0">Requisitos y competencias previas</h4>
-          <p style="color:var(--muted);margin-top:6px">Asignaturas: Sistemas lineales (código IE683). Competencias: conocimientos en análisis de variable compleja, teoría de análisis funcional, cálculo diferencial e integral, programación de computadores y programación lineal.</p>
-
-          <h4 style="margin:8px 0 6px 0">Recursos y bibliografía</h4>
-          <p style="color:var(--muted);margin-top:6px">Ejemplos de libros y recursos citados en el programa: Castellanos & Orozco — Representación de señales y sistemas; Vargas et al. — Teoría de señales; Hsu — Signals and Systems; Proakis & Manolakis — Tratamiento digital de señales; y textos sobre calidad de energía (UPME/Colciencias, Dugan, Kusko, Santoso).</p>
-
-          <h4 style="margin:8px 0 6px 0">Herramientas informáticas y técnicas</h4>
-          <p style="color:var(--muted);margin-top:6px">Software de simulación: Matlab™. Analizadores de señales, tarjetas de adquisición y demás herramientas técnicas necesarias para las prácticas de laboratorio.</p>
-
-          <h4 style="margin:8px 0 6px 0">Trabajos en laboratorio y proyectos (resumen)</h4>
-          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
-            <li>Dos proyectos: (1) Generar notas musicales en Matlab a partir de armónicos simples (6h). (2) Representación de datos mediante funciones ortogonales: aplicación al reconocimiento de señales (6h).</li>
-            <li>Cuatro trabajos de laboratorio:</li>
-            <ul style="color:var(--muted);margin:6px 0 0 36px;padding:0">
-              <li>Lab 1: Aliasing y teorema de muestreo (2h).</li>
-              <li>Lab 2: Armónicos simples y en sistemas eléctricos (2h).</li>
-              <li>Lab 3: Representación con espacios funcionales (2h).</li>
-              <li>Lab 4: Cálculo de DFT y FFT (2h).</li>
-            </ul>
-          </ul>
-
-          <h4 style="margin:8px 0 6px 0">Métodos de aprendizaje</h4>
-          <p style="color:var(--muted);margin-top:6px">Clases magistrales, asesorías, trabajos en grupo, talleres y proyecto final.</p>
-
-          <h4 style="margin:8px 0 6px 0">Métodos de evaluación (resumen)</h4>
-          <p style="color:var(--muted);margin-top:6px">Distribución propuesta en el programa:</p>
-          <ul style="color:var(--muted);margin:6px 0 0 18px;padding:0">
-            <li>Laboratorios, talleres y quices (T1 a T7): 25% (evaluación de RA1 a RA8).</li>
-            <li>Examen 1 (T1, T2): 25%.</li>
-            <li>Examen 2 (T3, T4): 25%.</li>
-            <li>Examen final (T5, T6, T7): 25%.</li>
-          </ul>
-
-          <p style="color:var(--muted);margin-top:10px;font-size:12px">Fuente: Programa de asignatura — Universidad Tecnológica de Pereira (extracto).</p>
         </div>
       </div>
 
@@ -262,3 +206,43 @@
     // Mobile menu toggle
     const hamb = document.getElementById('hamb');
     const menu = document.getElementById('menu');
+    hamb && hamb.addEventListener('click', ()=>{
+      if(menu.style.display==='flex') menu.style.display=''; else menu.style.display='flex';
+      menu.style.flexDirection='column';
+      menu.style.background='transparent';
+      menu.style.position='absolute';
+      menu.style.right='20px';
+      menu.style.top='64px';
+      menu.style.padding='12px';
+      menu.style.borderRadius='12px';
+      menu.style.boxShadow='0 8px 30px rgba(2,6,23,0.6)';
+    });
+
+    // Smooth scroll + active state
+    document.querySelectorAll('nav a, .cta a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+
+    // track section in view
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+    function onScroll(){
+      let idx = 0;
+      sections.forEach((s,i)=>{
+        const r = s.getBoundingClientRect();
+        if(r.top <= window.innerHeight*0.35) idx = i;
+      });
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const active = navLinks[idx]; if(active) active.classList.add('active');
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  </script>
+</body>
+</html>
